@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fab51a37c5c168438438b5c57511637, type: 3}
+  m_Name: card-king-spades
+  m_EditorClassIdentifier: 
+  id: 6a74cf23-adb3-4515-a11c-dcbb274b2928
+  icon: {fileID: 21300000, guid: d75182b34fd2fa14c8462b7c6dce503c, type: 3}
+  collected: 0

@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/ui.uss?fileID=7433441132597879392&amp;guid=7dcc119b0e92a1e4e86d73567c2f382e&amp;type=3#ui" />
+    <ui:VisualElement name="collectibleCountContainer" style="flex-direction: row; color: rgb(0, 0, 0);">
+        <ui:Label text="Collectibles: " display-tooltip-when-elided="true" style="color: rgb(0, 0, 0); font-size: 24px;" />
+        <ui:Label text="0" display-tooltip-when-elided="true" name="collectibleCount" style="font-size: 24px; color: rgb(0, 0, 0);" />
+    </ui:VisualElement>
+    <ui:VisualElement name="collectiblesMenuContainer" style="width: 80%; height: 80%; flex-wrap: wrap; left: 10%; top: 10%; flex-direction: row; display: none;">
+        <ui:VisualElement name="collectible" class="collected" />
+        <ui:VisualElement name="collectible" class="uncollected" />
+    </ui:VisualElement>
+</ui:UXML>

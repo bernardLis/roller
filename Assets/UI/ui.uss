@@ -1,0 +1,21 @@
+.collected {
+    width: 100px;
+    height: 100px;
+    background-image: url('project://database/Assets/Icons/card-2-clubs.png?fileID=2800000&guid=935b6d36c1d875f4d8c7ce5c8cd7bdb8&type=3#card-2-clubs');
+    background-color: rgb(255, 255, 255);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.uncollected {
+    width: 100px;
+    height: 100px;
+    background-image: url('project://database/Assets/Icons/card-2-clubs.png?fileID=2800000&guid=935b6d36c1d875f4d8c7ce5c8cd7bdb8&type=3#card-2-clubs');
+    background-color: rgb(65, 65, 65);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
