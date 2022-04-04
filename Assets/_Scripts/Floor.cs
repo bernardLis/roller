@@ -10,7 +10,6 @@ public class Floor : MonoBehaviour
     public GameObject positiveXCollider;
     public GameObject negativeXCollider;
 
-
     public GameObject cornerNegXNegZ;
     public GameObject cornerPosXNegZ;
     public GameObject cornerNegXPosZ;
@@ -25,13 +24,11 @@ public class Floor : MonoBehaviour
         float b = Random.Range(0f, 1f);
         GetComponent<Renderer>().material.color = new Color(r, g, b);
 
-        GameObject collectibleGameObject = Instantiate(collectiblePrefab, Vector3.zero, Quaternion.identity);
+        GameObject collectibleGO = Instantiate(collectiblePrefab, Vector3.zero, Quaternion.identity);
         float xRand = transform.position.x + Random.Range(-5f, 5f);
         float zRand = transform.position.z + Random.Range(-5f, 5f);
-        collectibleGameObject.transform.position = new Vector3(xRand, transform.position.y + 1, zRand); // annoying
-        collectibleGameObject.GetComponent<CollectibleGameObject>().Initialize(_collectible);
-
-        collectibleGameObject.GetComponent<Renderer>().material.color = new Color(1 - r, 1 - g, 1 - b);
+        collectibleGO.transform.position = new Vector3(xRand, transform.position.y + 1, zRand); // annoying
+        collectibleGO.GetComponent<CollectibleGameObject>().Initialize(_collectible, new Color(1 - r, 1 - g, 1 - b));
 
         if (_collectible == null)
             return;

@@ -5,7 +5,14 @@
         <ui:Label text="0" display-tooltip-when-elided="true" name="collectibleCount" style="font-size: 24px; color: rgb(0, 0, 0);" />
     </ui:VisualElement>
     <ui:VisualElement name="collectiblesMenuContainer" style="width: 80%; height: 80%; flex-wrap: wrap; left: 10%; top: 10%; flex-direction: row; display: none;">
-        <ui:VisualElement name="collectible" class="collected" />
-        <ui:VisualElement name="collectible" class="uncollected" />
+        <ui:ScrollView name="collectibleContainer" style="width: 100%;">
+            <ui:VisualElement name="collectible" class="uncollected" />
+            <ui:VisualElement name="collectible" class="collected" />
+            <ui:VisualElement name="collectible" class="collected" />
+            <ui:VisualElement name="collectible" class="collected" />
+            <ui:VisualElement name="collectible" class="collected" />
+            <ui:VisualElement name="collectible" class="collected" />
+            <ui:VisualElement name="collectible" class="collected" />
+        </ui:ScrollView>
     </ui:VisualElement>
 </ui:UXML>
