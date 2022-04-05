@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 
 public class CollectibleUI : MonoBehaviour
 {
+    CollectibleManager _collectibleManager;
+
     Label _collectibleCountLabel;
     int _collectibleCount = 0;
 
@@ -12,25 +14,24 @@ public class CollectibleUI : MonoBehaviour
     VisualElement _collectiblesMenuContainer;
     VisualElement _collectibleContainer;
 
-    CollectibleManager _collectibleManager;
 
     void Awake()
     {
+        _collectibleManager = CollectibleManager.Instance;
+
         var root = GetComponent<UIDocument>().rootVisualElement;
 
         _collectibleCountLabel = root.Q<Label>("collectibleCount");
-        _collectibleCountLabel.text = "0";
+        _collectibleCountLabel.text = _collectibleCount + "/" + _collectibleManager.collectibles.Count;
 
         _collectiblesMenuContainer = root.Q<VisualElement>("collectiblesMenuContainer");
         _collectibleContainer = root.Q<VisualElement>("collectibleContainer");
-
-        _collectibleManager = GetComponent<CollectibleManager>();
     }
 
     public void AddToCollected()
     {
         _collectibleCount++;
-        _collectibleCountLabel.text = _collectibleCount.ToString();
+        _collectibleCountLabel.text = _collectibleCount + "/" + _collectibleManager.collectibles.Count;
     }
 
     public void ToggleCollectiblesMenu()

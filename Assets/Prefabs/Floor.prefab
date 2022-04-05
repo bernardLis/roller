@@ -475,7 +475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7779137be7aec4aa6a72914208b6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectiblePrefab: {fileID: 724808636273057393, guid: 21f85d3eb7bf94519aed9b079a70204a, type: 3}
+  _collectiblePrefab: {fileID: 724808636273057393, guid: 21f85d3eb7bf94519aed9b079a70204a, type: 3}
+  _questGiverPrefab: {fileID: 5414435002305957090, guid: 0db398a42cb7e4cf1a0a1f8d1dfb4847, type: 3}
   positiveZCollider: {fileID: 254188512}
   negativeZCollider: {fileID: 4665738424674121259}
   positiveXCollider: {fileID: 5750532890474755247}

@@ -3,14 +3,14 @@ using DG.Tweening;
 
 public class CollectibleGameObject : MonoBehaviour
 {
-    public Collectible _collectible;
+    public Collectible Collectible;
     [SerializeField] Light _light;
     [SerializeField] GameObject _particleEffect;
 
 
     public void Initialize(Collectible collectible, Color col)
     {
-        _collectible = collectible;
+        Collectible = collectible;
 
         foreach (Transform c in transform)
         {
@@ -31,8 +31,8 @@ public class CollectibleGameObject : MonoBehaviour
 
     public void Collected()
     {
-        _collectible.collected = true;
-        DOTween.KillAll();
+        Collectible.collected = true;
+        transform.DOKill();
         Vector3 rotation = new Vector3(-90, 0, 0);
         GameObject effect = Instantiate(_particleEffect, transform.position, Quaternion.Euler(rotation));
         Destroy(effect, 1);

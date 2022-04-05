@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,16 +10,19 @@ public class PlayerController : MonoBehaviour
     public GameObject FloorPrefab;
     public float Speed = 10.0f;
 
-    public string SpawnTag;
+    [SerializeField] string _spawnTag;
 
     Rigidbody _rb;
     CollectibleManager _collectibleManager;
     CollectibleUI _collectibleUI;
 
+    [SerializeField] GameObject _particleCollectionEffect;
+    [SerializeField] GameObject _bigSphere;
+
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _collectibleManager = GetComponent<CollectibleManager>();
+        _collectibleManager = CollectibleManager.Instance;
         _collectibleUI = GetComponent<CollectibleUI>();
     }
 
@@ -32,6 +36,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown("c"))
             _collectibleUI.ToggleCollectiblesMenu();
+        if (Input.GetKeyDown("f"))
+            ShakeSphere();
+
     }
 
     void FixedUpdate()
@@ -42,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider _col)
     {
-        if (_col.transform.CompareTag(SpawnTag))
+        if (_col.transform.CompareTag(_spawnTag))
             HandleFloorSpawning(_col);
 
         if (_col.transform.CompareTag("Collectible"))
@@ -100,7 +107,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject f = Instantiate(FloorPrefab, _pos, Quaternion.Euler(-90, 0, 0));
         Floors.Add(f);
-        f.GetComponent<Floor>().Initialize(_collectibleManager.GetRandomCollectible());
+        f.GetComponent<Floor>().Initialize();
         f.transform.parent = FloorHolder;
     }
 
@@ -109,5 +116,10 @@ public class PlayerController : MonoBehaviour
     {
         _collectibleUI.AddToCollected();
         _col.gameObject.GetComponent<CollectibleGameObject>().Collected();
+    }
+
+    void ShakeSphere()
+    {
+        _bigSphere.transform.DOShakePosition(1, 10, 10, 90);
     }
 }

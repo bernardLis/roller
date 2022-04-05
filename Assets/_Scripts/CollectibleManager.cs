@@ -6,8 +6,16 @@ using UnityEditor;
 public class CollectibleManager : MonoBehaviour
 {
     public List<Collectible> collectibles = new();
+
+    public static CollectibleManager Instance { get; private set; }
     void Awake()
     {
+        // If there is an instance, and it's not me, delete myself.
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
+
         LoadCollectibles();
     }
 
@@ -18,14 +26,33 @@ public class CollectibleManager : MonoBehaviour
         {
             collectibles.Add((Collectible)loadedCollectibles[x]);
         }
+
+        // TODO: not needed in build
+        foreach (Collectible c in collectibles)
+        {
+            c.collected = false;
+        }
     }
 
     public Collectible GetRandomCollectible()
     {
-        // TODO: return only not collected collectibles... easy?
         if (collectibles.Count == 0)
             return null;
         return collectibles[Random.Range(0, collectibles.Count)];
     }
+
+    public Collectible GetRandomUncollectedCollectible()
+    {
+        List<Collectible> uncollected = new();
+        foreach (Collectible c in collectibles)
+            if (c.collected == false)
+                uncollected.Add(c);
+        
+        if(uncollected.Count == 0)
+            return null;
+        
+        return uncollected[Random.Range(0, collectibles.Count)];
+    }
+
 
 }
