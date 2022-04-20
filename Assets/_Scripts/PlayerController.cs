@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using DG.Tweening;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : LivingEntity
 {
     public List<GameObject> Floors = new();
     public Transform FloorHolder;
@@ -26,10 +26,10 @@ public class PlayerController : MonoBehaviour
         _collectibleUI = GetComponent<CollectibleUI>();
     }
 
-    void Start()
+    protected override void Start()
     {
-        Vector3 floorPos = new Vector3(transform.position.x, transform.position.y - 5f, transform.position.z);
-        SpawnFloor(floorPos);
+        base.Start();
+        startingHealth = 10000;
     }
 
     void Update()
@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour
             _collectibleUI.ToggleCollectiblesMenu();
         if (Input.GetKeyDown("f"))
             ShakeSphere();
-
     }
+
 
     void FixedUpdate()
     {
@@ -111,6 +111,12 @@ public class PlayerController : MonoBehaviour
         f.transform.parent = FloorHolder;
     }
 
+
+    public override void Die()
+    {
+        Debug.Log("oh player you are dead");
+    }
+
     // TODO: maybe this should be done by the collectibles?
     void HandleCollectible(Collider _col)
     {
@@ -122,4 +128,5 @@ public class PlayerController : MonoBehaviour
     {
         _bigSphere.transform.DOShakePosition(1, 10, 10, 90);
     }
+
 }

@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 3376290285817332311}
   - component: {fileID: 6055463460985792234}
   - component: {fileID: 1307476664586845376}
+  - component: {fileID: 7993318665939509539}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -477,6 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collectiblePrefab: {fileID: 724808636273057393, guid: 21f85d3eb7bf94519aed9b079a70204a, type: 3}
   _questGiverPrefab: {fileID: 5414435002305957090, guid: 0db398a42cb7e4cf1a0a1f8d1dfb4847, type: 3}
+  _enemy: {fileID: 4724758705767332453, guid: bda1f5b567781dd41b94c9119706482a, type: 3}
   positiveZCollider: {fileID: 254188512}
   negativeZCollider: {fileID: 4665738424674121259}
   positiveXCollider: {fileID: 5750532890474755247}
@@ -485,6 +487,18 @@ MonoBehaviour:
   cornerPosXNegZ: {fileID: 2779160367597625288}
   cornerNegXPosZ: {fileID: 1041962791573018087}
   cornerPosXPosZ: {fileID: 7649578508930796375}
+--- !u!114 &7993318665939509539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5557064209402070841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfacb1016cc60d4b862563c4a8ec580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5750532890474755247
 GameObject:
   m_ObjectHideFlags: 0

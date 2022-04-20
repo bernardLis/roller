@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Floor : MonoBehaviour
 {
     CollectibleManager _collectibleManager;
     [SerializeField] GameObject _collectiblePrefab;
     [SerializeField] GameObject _questGiverPrefab;
+    [SerializeField] GameObject _enemy;
 
     [Header("Colliders")]
     public GameObject positiveZCollider;
@@ -28,8 +30,17 @@ public class Floor : MonoBehaviour
         float b = Random.Range(0f, 1f);
         GetComponent<Renderer>().material.color = new Color(r, g, b);
         Color oppositeColor = new Color(1 - r, 1 - g, 1 - b);
-        SpawnCollectible(oppositeColor);
-        SpawnQuestGiver();
+
+        int spawnIndex = Random.Range(0, 4);
+        // 0 spawn nothing.
+        if (spawnIndex == 1)
+            SpawnCollectible(oppositeColor);
+        if (spawnIndex == 2)
+            SpawnQuestGiver();
+        if (spawnIndex == 3)
+            SpawnEnemy(oppositeColor);
+        // TODO: spawn shop
+
     }
 
     void SpawnCollectible(Color color)
@@ -47,6 +58,15 @@ public class Floor : MonoBehaviour
         Vector3 spawnPos = new Vector3(transform.position.x + Random.Range(-5f, 5f), transform.position.y + 1, transform.position.z + Random.Range(-5f, 5f));
         GameObject questGiver = Instantiate(_questGiverPrefab, spawnPos, Quaternion.identity);
         questGiver.GetComponent<QuestGiver>().Initialize(collectible);
+    }
+
+    void SpawnEnemy(Color color)
+    {
+        FindObjectOfType<NavMeshSurface>().BuildNavMesh();
+
+        GameObject spawnedEnemy = Instantiate(_enemy, transform.position + Vector3.forward, Quaternion.identity);
+        Enemy e = spawnedEnemy.GetComponent<Enemy>();
+        e.SetCharacteristics(3, 20, 100, color);
     }
 
     void DisableSpawnColliders(bool isRecursive)
