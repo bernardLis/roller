@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3208829381670112695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4017969604807622868}
+  m_Layer: 0
+  m_Name: EffectSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4017969604807622868
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3208829381670112695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.046, y: 0, z: 0.481}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3402430685363439093}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3402430684885741591
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,6 +143,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3402430684885741585}
+  - {fileID: 4017969604807622868}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 133.179, z: 0}
@@ -230,9 +262,10 @@ MonoBehaviour:
   FloorPrefab: {fileID: 5557064209402070841, guid: a1f4b0ffed6e656478881928af3d32c1, type: 3}
   Speed: 10
   _spawnTag: SpawnTrigger
-  _enemy: {fileID: 4724758705767332453, guid: bda1f5b567781dd41b94c9119706482a, type: 3}
   _particleCollectionEffect: {fileID: 0}
   _bigSphere: {fileID: 0}
+  _effectSpawnPoint: {fileID: 3208829381670112695}
+  _electricDischarge: {fileID: 3657339347196551162, guid: 33fb8a787658fc44b9e2121553cdf3bb, type: 3}
 --- !u!114 &3402430685363439094
 MonoBehaviour:
   m_ObjectHideFlags: 0

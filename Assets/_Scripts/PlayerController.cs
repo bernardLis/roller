@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.UIElements;
 using DG.Tweening;
+using UnityEngine.VFX;
 
 public class PlayerController : LivingEntity
 {
@@ -18,6 +20,9 @@ public class PlayerController : LivingEntity
 
     [SerializeField] GameObject _particleCollectionEffect;
     [SerializeField] GameObject _bigSphere;
+    [SerializeField] GameObject _effectSpawnPoint;
+    [SerializeField] GameObject _electricDischarge;
+
 
     void Awake()
     {
@@ -34,17 +39,48 @@ public class PlayerController : LivingEntity
 
     void Update()
     {
+        if (Input.GetKeyDown("space"))
+            StartCoroutine(ElectricDischarge());
         if (Input.GetKeyDown("c"))
             _collectibleUI.ToggleCollectiblesMenu();
         if (Input.GetKeyDown("f"))
             ShakeSphere();
     }
 
-
     void FixedUpdate()
     {
         transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * Time.fixedDeltaTime * Speed);
         transform.Rotate(new Vector3(0, Input.GetAxis("Horizontal"), 0) * Time.fixedDeltaTime * Speed * 10, Space.World);
+    }
+
+    IEnumerator ElectricDischarge()
+    {
+        Debug.Log("click");
+        GameObject electricty = Instantiate(_electricDischarge,
+                                _effectSpawnPoint.transform.position, Quaternion.identity);
+        electricty.transform.parent = transform;
+        electricty.transform.localRotation = Quaternion.identity;
+        VisualEffect effect = electricty.GetComponentInChildren<VisualEffect>();
+        yield return new WaitForSeconds(1f);
+
+        float endTime = Time.time + 1f;
+        float baseRadius = 0.01f;
+        while (Time.time < endTime)
+        {
+            Debug.Log("in while");
+            baseRadius += 0.02f;
+            effect.SetFloat("Cone_baseRadius", baseRadius);
+            yield return null;
+        }
+        // 
+
+
+        yield return new WaitForSeconds(0.5f);
+
+
+        Destroy(electricty);
+
+        //yield return null;
     }
 
     void OnTriggerEnter(Collider _col)

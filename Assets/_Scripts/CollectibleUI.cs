@@ -10,12 +10,11 @@ public class CollectibleUI : MonoBehaviour
     Label _collectibleCountLabel;
     int _collectibleCount = 0;
 
-
     VisualElement _collectiblesMenuContainer;
     VisualElement _collectibleContainer;
 
 
-    void Awake()
+    void Start()
     {
         _collectibleManager = CollectibleManager.Instance;
 
